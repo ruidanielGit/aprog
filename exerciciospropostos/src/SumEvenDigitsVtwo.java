@@ -5,23 +5,25 @@ public class SumEvenDigitsVtwo {
     public void sumEvenDigitsVtwo() {
 
         Scanner sc = new Scanner(System.in);
-        int num;
-        int sum = 0;
-        String s;
+        int digit, n;
 
-        num = sc.nextInt();
-        while (num > 0) {
-            //System.out.print("Introduza um numero inteiro: ");
-            s = String.valueOf(num);
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) % 2 == 0) {
-                    sum += Integer.parseInt(String.valueOf(s.charAt(i)));
+        //lê próximos numeros
+        n = sc.nextInt();
+        while (n > 0) {
+            int sum = 0;
+            //faz a soma dos digitos pares
+            while (n > 0) {
+                //finds the last digit
+                digit = n % 10;
+                if (digit % 2 == 0) {
+                    sum += digit;
                 }
+                n = n / 10;
             }
             System.out.println(sum);
-            sum = 0;
-            num = sc.nextInt();
+            n = sc.nextInt();
         }
+
     }
 
 

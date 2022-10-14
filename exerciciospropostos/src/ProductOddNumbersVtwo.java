@@ -5,22 +5,26 @@ public class ProductOddNumbersVtwo {
     public void productOddNumbersVtwo() {
 
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        int product = 1;
+        int digit, n, count = 0;
 
-        while (num > 0) {
-            String s = String.valueOf(num);
-            for (int i = 0; i < s.length(); i++) {
-                if (s.charAt(i) % 2 != 0) {
-                    product *= Integer.parseInt(String.valueOf(s.charAt(i)));
+        //lê próximos numeros
+        n = sc.nextInt();
+        while (n > 0) {
+            count = 0;
+            int product = 1;
+            //faz a soma dos digitos pares
+            while (n > 0) {
+                //finds the last digit
+                digit = n % 10;
+                if (digit % 2 != 0) {
+                    product *= digit;
+                    count++;
                 }
+                n = n / 10;
             }
-            if (product > 1) System.out.println(product);
-            else {
-                System.out.println("no odd digits");
-            }
-            product = 1;
-            num = sc.nextInt();
+            if (count == 0) System.out.println("no odd digits");
+            else System.out.println(product);
+            n = sc.nextInt();
         }
     }
 

@@ -1,26 +1,32 @@
 import java.util.Scanner;
 
 public class Palindrome {
-
-    public String palindrome() {
+    private void palindrome() {
 
         Scanner sc = new Scanner(System.in);
-        String s = String.valueOf(sc.nextInt());
-        int i, j;
-        boolean isPalindrome = true;
 
-        for (i = 1; i <= s.length() - 1; i++) {
-            if (Integer.parseInt(String.valueOf(s.charAt(i-1))) != Integer.parseInt(String.valueOf(s.charAt(s.length()-i))))
-                isPalindrome = false;
+        int resto, sum = 0, temp;
+        int n = sc.nextInt();
+
+        temp = n;
+        while (n > 0) {
+            resto = n % 10;
+            sum = (sum * 10) + resto;
+            n = n / 10;
         }
-        if (isPalindrome) return "palindrome";
-        return "not palindrome";
+        if (temp == sum)
+            System.out.println("palindrome");
+        else
+            System.out.println("not palindrome");
     }
+
 
     public static void main(String[] args) {
 
         Palindrome p = new Palindrome();
 
-        System.out.println(p.palindrome());
+        p.palindrome();
     }
+
+
 }

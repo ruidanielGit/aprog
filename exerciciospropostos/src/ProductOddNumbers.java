@@ -2,24 +2,23 @@ import java.util.Scanner;
 
 public class ProductOddNumbers {
 
-    public void productOddNumbers(int num) {
+    public void productOddNumbers(int n) {
 
-        String s = String.valueOf(num);
-        int product = 1;
+        int digit, product = 1, count = 0;
 
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) % 2 != 0) {
-                product *= Integer.parseInt(String.valueOf(s.charAt(i)));
+        while (n > 0) {
+            //finds the last digit
+            digit = n % 10;
+            if (digit % 2 != 0) {
+                product *= digit;
+                count++;
             }
+            n = n / 10;
         }
-        if (product > 1) {
-            System.out.println(product);
-            return;
-        }
-        System.out.println("no odd digits");
+        if (count != 0) System.out.println(product);
+        else System.out.println("no odd digits");
 
     }
-
 
     public static void main(String[] args) {
 

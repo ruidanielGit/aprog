@@ -6,24 +6,26 @@ public class ConvertFromBaseEightToTen {
 
     public void convertFromBaseEightToTen() {
         Scanner sc = new Scanner(System.in);
-        int baseOct;
-        int baseDec = 0;
-        String s;
 
-        baseOct = sc.nextInt();
-        while (baseOct > 0) {
-            //System.out.print("Introduza um numero inteiro: ");
-            s = String.valueOf(baseOct);
-            int count = s.length()-1;
-            for (int i = 0; i < s.length(); i++) {
-                baseDec += (Integer.parseInt(String.valueOf(s.charAt(i)))) * pow(8, count);
-                count--;
+        int oct, count, dec, sum = 0;
+
+        oct = sc.nextInt();
+        while (oct > 0) {
+            sum = 0;
+            count = 0;
+            while (oct > 0) {
+                //finds the last digit
+                int digit = oct % 10;
+                //num decimal = digito x 8 elevado a reversed index
+                dec = (int) (digit * pow(8, count));
+                sum += dec;
+                count++;
+                oct = oct / 10;
             }
-            System.out.println(baseDec);
-            baseDec = 0;
-
-            baseOct = sc.nextInt();
+            System.out.println(sum);
+            oct = sc.nextInt();
         }
+
     }
 
     public static void main(String[] args) {
