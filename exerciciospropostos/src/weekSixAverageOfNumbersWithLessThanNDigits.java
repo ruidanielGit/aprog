@@ -2,22 +2,29 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Scanner;
 
+
 public class weekSixAverageOfNumbersWithLessThanNDigits {
 
-    private static int sum = 0;
+    static Scanner s = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
 
-        int k = s.nextInt(), i = 0;
+        int n = s.nextInt();
         int num = s.nextInt();
+        int i = 0, maxread = 5;
 
-        while (i < k && digitsOfANumber(num) < k) {
-            sum(num);
-            num = s.nextInt();
+        if (digitsOfANumber(num) > n)
+            System.out.println("0.00");
+        else {
+            int sum = num;
             i++;
+            while (digitsOfANumber(num) < n && i < maxread) {
+                num = s.nextInt();
+                if (digitsOfANumber(num) < n) {
+                    sum += num; i++;}
+            }
+            System.out.println(average(sum, i));
         }
-        System.out.println(average(sum, i));
     }
 
     public static int digitsOfANumber(int n) {
@@ -28,11 +35,6 @@ public class weekSixAverageOfNumbersWithLessThanNDigits {
             n = n / 10;
         }
         return count;
-    }
-
-    public static int sum(int n) {
-        sum += n;
-        return sum;
     }
 
     public static String average(int sum, int n) {

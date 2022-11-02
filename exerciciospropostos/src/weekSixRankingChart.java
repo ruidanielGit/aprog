@@ -2,38 +2,46 @@ import java.util.Scanner;
 
 public class weekSixRankingChart {
 
+    static String finalRank = "";
+
     public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int numStudents = s.nextInt();
+        int numDisc = s.nextInt();
 
-        Scanner intS = new Scanner(System.in);
-        Scanner stringS = new Scanner(System.in);
-        int numStudents = intS.nextInt();
-        int numDisc = intS.nextInt();
-
-        for (int i = 0; i < numDisc; i++) {
-            String subject = stringS.nextLine();
-            int approved = intS.nextInt();
-            System.out.println(rankingChart(subject, numStudents, subject, approved));
-            if (i == 0) stringS.nextLine();
+        if (numDisc > 0) {
+            for (int i = 0; i < numDisc; i++) {
+                String subject = s.next();
+                int approved = s.nextInt();
+                finalRank += "Subject: " + subject + rankingChart(numStudents, approved);
+            }
+            System.out.print(finalRank);
         }
     }
 
-    public static String rankingChart(String subject, int students, String disc, int numApproved) {
+    public static String rankingChart(int students, int numApproved) {
 
         int numFailed = students - numApproved;
         int i = 0;
         String approved = "", failed = "";
 
-        while (i < numApproved) {
-            approved += '*';
-            i++;
+        if (numApproved > 0) {
+            while (i < numApproved) {
+                approved += "*";
+                i++;
+            }
         }
+
         i = 0;
-        while (i < numFailed) {
-            failed += '*';
-            i++;
+        if (numFailed > 0) {
+            while (i < numFailed) {
+                failed += "*";
+                i++;
+            }
         }
+        if (numApproved == 0) return "\n- Approved: " + "\n- Failed: " + failed + "\n";
+        if (numFailed == 0) return "\n- Approved: " + approved + "\n- Failed: " + "\n";
 
-
-        return "Subject: " + disc + "\n- Approved: " + approved + "\n- Failed: " + failed;
+        return "\n- Approved: " + approved + "\n- Failed: " + failed + "\n";
     }
 }
