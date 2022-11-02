@@ -13,14 +13,14 @@ public class weekSixCalculateAnglesOFTriangle {
         sym.setDecimalSeparator('.');
         df.setDecimalFormatSymbols(sym);
 
-        first = Double.parseDouble(String.valueOf(s.nextLine()));
-        second = Double.parseDouble(String.valueOf(s.nextLine()));
-        third = Double.parseDouble(String.valueOf(s.nextLine()));
+        first = Double.parseDouble(String.valueOf(s.next()));
+        second = Double.parseDouble(String.valueOf(s.next()));
+        third = Double.parseDouble(String.valueOf(s.next()));
 
         int sumAngles = (int) (getAngle(first, second) + getAngle(first, third) + getAngle(second, third));
 
         if (sumAngles == 180 && getAngle(first, second) > 0 && getAngle(first, third) > 0 && getAngle(second, third) > 0) {
-            System.out.println("a=" + first + "\nb=" + second + "\nc=" + third + "\n");
+            System.out.println("a=" + df.format(first) + "\nb=" + df.format(second) + "\nc=" + df.format(third));
             System.out.println("ang(a,b)=" + df.format(getAngle(first, second)));
             System.out.println("ang(a,c)=" + df.format(getAngle(first, third)));
             System.out.println("ang(b,c)=" + df.format(getAngle(second, third)));
